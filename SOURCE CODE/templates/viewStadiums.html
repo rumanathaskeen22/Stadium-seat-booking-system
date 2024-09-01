@@ -1,0 +1,28 @@
+{% include 'shead.html'%}
+<br><br>
+<div class="container mt-5">
+<h3 class="text-center">Game Stadiums</h3>
+<table style="width:100%" class="table table-bordered">
+  <tr>
+        <th>Stadium Name</th>
+        <th>Location</th>
+        <th>Address</th>
+      <th>Action</th>
+
+  </tr>
+      {% for stadium in stadiums%}
+      <tr>
+        <td>{{stadium['stadium_name']}}</td>
+        <td>{{stadium['location']}}</td>
+         <td>{{stadium['address']}}</td>
+          <td>
+
+              <a href="updateStadium?stadium_id={{stadium['_id']}}" class="btn btn-success w-100">Update</a>
+          </td>
+
+
+      </tr>
+  {% endfor%}
+
+</table>
+</div>

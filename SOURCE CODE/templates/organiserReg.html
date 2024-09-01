@@ -1,0 +1,79 @@
+{% include 'shead.html' %}
+<br><br>
+
+<script>
+function validate(){
+        let name = document.getElementById("name").value
+        if(name==""){
+            alert("Enter Name")
+            return false;
+        }
+        let email = document.getElementById("email").value
+        if(email==""){
+            alert("Enter Email")
+            return false;
+        }
+        let password = document.getElementById("password").value
+        if(password==""){
+            alert("Enter Password")
+            return false;
+        }
+        let phone = document.getElementById("phone").value
+        if(phone==""){
+            alert("Enter PhoneNumber")
+            return false;
+        }
+        let picture = document.getElementById("picture").value
+        if(picture==""){
+            alert("Choose Picture")
+            return false;
+        }
+
+        let address = document.getElementById("address").value
+        if(address==""){
+            alert("Enter Address")
+            return false;
+        }
+
+        return true
+    }
+</script>
+<div class="container mt-5">
+    <div class="card p-3">
+        <div class="text-center h3">Game Organiser Registration</div>
+        <form action="organiserReg1" method="post" onsubmit="return validate()" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6 mt-1">
+                 <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter Name"  class="form-control ">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="email" >Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter Email"  class="form-control mt-1">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="password" >Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter Password"  class="form-control mt-2">
+                </div>
+
+                </div>
+                <div class="col-md-6">
+                      <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="number" name="phone" id="phone" placeholder="Enter Phone"  class="form-control mt-1" >
+                </div>
+                    <div class="form-group mt-2">
+                    <label for="picture">Choose Picture</label>
+                    <input type="file" name="picture" id="picture"   class="form-control mt-1">
+                </div>
+                    <div class="form-group mt-2">
+                    <label for="address">Address</label>
+                    <textarea name="address" id="address" placeholder="Enter Address"  class="form-control mt-1"></textarea>
+                </div>
+                </div>
+                <input type="submit" value="Register" class="btn btn-primary w-100 mt-3">
+            </div>
+        </form>
+    </div>
+</div>

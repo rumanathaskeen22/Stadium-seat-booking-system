@@ -1,0 +1,54 @@
+{% include 'shead.html'%}
+<br><br>
+<script>
+ function validate(){
+        let no_of_seats = document.getElementById("no_of_seats").value
+        if(no_of_seats==""){
+            alert("Enter  Seats")
+            return false;
+        }
+        let price_per_seat = document.getElementById("price_per_seat").value
+        if(price_per_seat==""){
+            alert("Enter Price Per Seat")
+            return false;
+        }
+         let is_coupleSeat = document.getElementById("is_coupleSeat").value
+        if(is_coupleSeat==""){
+            alert("Select One ")
+            return false;
+        }
+        let complimentary_food = document.getElementById("complimentary_food").value
+        if(complimentary_food==""){
+            alert("Enter Complimentary Food")
+            return false;
+        }
+        return true
+    }
+</script>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 mt-5">
+        <form action="addTickets1" method="post" onsubmit="return validate()">
+            <input type="hidden" name="schedule_id" value="{{schedule_id}}">
+            <div class="text-center h3">Add Tickets</div>
+            <div class="form-group">
+                <label for="no_of_seats">Number Of Seats</label>
+                <input type="text" name="no_of_seats" id="no_of_seats" placeholder="Number Of Seats"  class="form-control mt-1">
+            </div>
+            <div class="form-group mt-2">
+                <label for="price_per_seat">Price Per Seat</label>
+                <input type="text" name="price_per_seat" id="price_per_seat" placeholder="Price Per Seat"  class="form-control mt-1" >
+            </div>
+             <div class="form-group mt-2">
+                <label for="is_coupleSeat">Is Couple Seat</label>
+                 <input type="radio" class="" id="is_coupleSeat"  value="Yes" name="is_coupleSeat" > <label for="is_coupleSeat">Yes</label>
+                 <input type="radio" id="is_coupleSeat1" name="is_coupleSeat" value="No" > <label for="is_coupleSeat">No</label>
+            </div>
+           <div class="form-group mt-2">
+                <label for="complimentary_food">Complimentary Food</label>
+               <textarea  name="complimentary_food" id="complimentary_food" placeholder="Complimentary Food" class="form-control mt-1" ></textarea>
+            </div>
+            <input type="submit" value="Add Tickets" class="btn btn-primary w-100 mt-3">
+        </form>
+    </div>
+</div>

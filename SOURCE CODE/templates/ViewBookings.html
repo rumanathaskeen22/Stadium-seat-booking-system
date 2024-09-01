@@ -1,0 +1,86 @@
+{% include 'shead.html'%}
+<br><br>
+<!--<div class="text-center h4 mt-5">View Bookings</div>-->
+<div class="container">
+<div class="row">
+        {% for booking in bookings%}
+        {% set audian = get_audian_by_booking(booking['audian_id'])%}
+        {% set schedule = get_schedule_by_booking(booking['schedule_id'])%}
+         {% set ticket = get_tickets_by_booking(booking['ticket_id'])%}
+        {% set stadium = get_stadium_by_scheduleTime_id(schedule['time_slot_id'])%}
+        {% set time_slot = get_timeSlot_by_scheduleTime_id(schedule['time_slot_id'])%}
+        <div class="col-md-1"></div>
+         <div class="col-md-5 mt-5">
+             <div class="card p-3 m-2" style="background-color:#FFF8DC">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="text-muted" style="font-size:12px">Game Title</div>
+                          <div class="h6">{{schedule['game_title']}}</div>
+                     </div>
+                     <div class="col-md-6">
+                          <div class="text-muted" style="font-size:12px">Stadium</div>
+                          <div class="h6">{{stadium['stadium_name']}} ({{stadium['location']}})</div>
+                     </div>
+                     <div class="col-md-6">
+                          <div class="text-muted" style="font-size:12px">Scheduled Start Date</div>
+                          <div class="h6">{{time_slot['start_time']}}</div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="text-muted" style="font-size:12px">Scheduled End Date</div>
+                          <div class="h6">{{time_slot['end_time']}}</div>
+                     </div>
+                       <div class="col-md-6">
+                         <div class="text-muted" style="font-size:12px">Audian</div>
+                          <div class="h6">{{audian['name']}} ({{audian['phone']}})</div>
+                     </div>
+                     <div class="col-md-6"></div>
+                     <div class="col-md-6"></div>
+                     <div class="col-md-6"></div>
+                     <div class="text-center mt-3">Ticket Summary</div>
+
+                     <div class="col-md-7">
+                         Seat Numbers
+                         <div class="row">
+                              {% for seat_number in booking['seat_numbers']%}
+                             <div class="col-md-3">
+                                  {{seat_number['seat']}}
+                             </div>
+                               {% endfor%}
+                         </div>
+
+                       </div>
+                     <div class="col-md-5">
+                         <div class="text-muted" style="font-size:12px">Total Price</div>
+                         <div class="h6">$ <b>{{booking['totalPrice']}}</b></div>
+                     </div>
+
+                 </div>
+             <div class="card-footer">
+                 <div class="row">
+                      {% if session['role'] =='audian'%}
+                     <div class="col-md-6">
+                         {% if booking['booking_status'] == 'Booking Confirmed' %}
+                         <form action="cancel_booking" method="post">
+                             <input type="hidden" name="booking_id" value="{{booking['_id']}}">
+                              <input type="submit"  value="Cancel Booking" class="btn btn-danger">
+                         </form>
+                         {% endif%}
+
+                     </div>
+                       <div class="col-md-6">
+                           {% if booking['booking_status'] == 'Booking Confirmed' %}
+                         <form action="transferTickets" method="post">
+                             <input type="hidden" name="booking_id" value="{{booking['_id']}}">
+                              <input type="submit"  value="Transfer Tickets" class="btn btn-primary">
+                         </form>
+                        {% endif %}
+                       </div>
+                      {% endif %}
+                 </div>
+
+             </div>
+             </div>
+         </div>
+        {% endfor%}
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{% include 'shead.html'%}
+<br><br>
+<script>
+function validate(){
+        let email = document.getElementById("email").value
+        if(email==""){
+            alert("Enter Email")
+            return false;
+        }
+        let Password = document.getElementById("Password").value
+        if(Password==""){
+            alert("Enter Password")
+            return false;
+        }
+
+        return true
+    }
+</script>
+<div class="row mt-2">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 ms-2">
+        <div class="card p-4 mt-5">
+            <form action="organiserLoginPage1" method="post" onsubmit="return validate()">
+                <div class="h4 text-center">Organiser Login</div>
+                <div class="form-group">
+                    <label for="email" >Email</label>
+                    <input type="text" class="form-control mt-1" id="email" placeholder="Enter Email" name="email">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="Password">Password</label>
+                    <input type="Password" class="form-control mt-1" id="Password"  placeholder="Enter Password" name="password">
+                </div>
+                <input type="submit" value="Login" class="btn btn-primary  w-100 mt-3">
+                <div class="mt-2 text-center" style="font-size:26px">New Organiser? <br> <a href="organiserReg"><img src="https://www.pngkit.com/png/full/277-2776525_register-now-icon-png.png" style="height:50px;width:150px;font-size:25px" class=""></a></div>
+            </form>
+        </div>
+    </div>
+</div>

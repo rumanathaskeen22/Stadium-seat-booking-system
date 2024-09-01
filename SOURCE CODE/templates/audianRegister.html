@@ -1,0 +1,29 @@
+{% include 'shead.html' %}
+<br><br>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="card p-4 mt-5">
+            <form action="audianRegister1" method="post">
+                <div class="h4 text-center">Enter Details And Login</div>
+                 <div class="form-group">
+                     <input type="hidden" name="otp" value="{{otp}}">
+                   <input type="hidden" name="email" value="{{email}}">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="phone">Phone</label>
+                    <input type="number" class="form-control" id="phone" placeholder="Enter Phone" name="phone" required>
+                </div>
+                <div class="">
+                    <label for="otp2">otp</label>
+                    <input type="number" class="form-control" placeholder="Enter otp" name="otp2" id="otp2">
+                </div>
+                <input type="submit" value="Register & Login" class="btn btn-primary center w-100 mt-3">
+            </form>
+        </div>
+
+    </div>
+
+</div>

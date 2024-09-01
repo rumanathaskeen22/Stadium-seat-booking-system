@@ -1,0 +1,55 @@
+{% include 'shead.html'%}
+<br><br>
+<div class="container mt-5">
+    <div class="row">
+        {% set stadium = get_stadium_by_scheduleTime_id(schedules['time_slot_id'])%}
+        {% set time_slot = get_timeSlot_by_scheduleTime_id(schedules['time_slot_id'])%}
+        <div class="col-md-2"></div>
+         <div class="col-md-5">
+             <div class="card p-3" style="background-color:#FFF8DC">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="text-muted" style="font-size:12px">Game Title</div>
+                          <div class="h6">{{schedules['game_title']}}</div>
+                     </div>
+                     <div class="col-md-6">
+                          <div class="text-muted" style="font-size:12px">Stadium</div>
+                          <div class="h6">{{stadium['stadium_name']}} ({{stadium['location']}})</div>
+                     </div>
+                     <div class="col-md-6">
+                          <div class="text-muted" style="font-size:12px">Scheduled Start Date</div>
+                          <div class="h6">{{time_slot['start_time']}}</div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="text-muted" style="font-size:12px">Scheduled End Date</div>
+                          <div class="h6">{{time_slot['end_time']}}</div>
+                     </div>
+                     <div class="col-md-6"></div>
+                     <div class="col-md-6"></div>
+                     <div class="col-md-6"></div>
+                     <div class="text-center mt-3">Ticket Summary</div>
+
+                     <div class="col-md-7">
+                         Seat Numbers
+                         <div class="row">
+                              {% for seat_number in seat_numbers%}
+                             <div class="col-md-3">
+                                  {{seat_number['seat']}}
+                             </div>
+                               {% endfor%}
+                         </div>
+
+                       </div>
+                     <div class="col-md-5">
+                         <div class="text-muted" style="font-size:12px">Total Price</div>
+                         <div class="h6">$ <b>{{totalPrice}}</b></div>
+                     </div>
+
+                 </div>
+                 <div class="card-footer">
+                     <a href="pay_amount?booking_id={{booking_id}}&totalPrice={{totalPrice}}" class="btn btn-primary">Pay & Book</a>
+                 </div>
+             </div>
+         </div>
+    </div>
+</div>

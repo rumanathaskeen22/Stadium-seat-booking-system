@@ -1,0 +1,19 @@
+{% include 'shead.html'%}
+<br><br>
+<div class="row">
+    <div class="col-md-4"></div>
+     <div class="col-md-4">
+     <div class="card p-3 mt-5">
+        <form action="login_to_home1" method="post">
+         <div class="h4 text-center mt-3">login With Otp</div>
+               <div class="form-group">
+                   <input type="hidden" name="otp" value="{{otp}}">
+                   <input type="hidden" name="email" value="{{email}}">
+                  <label for="otp2">OTP</label>
+                  <input type="number" class="form-control" id="otp2" placeholder="Enter OTP" name="otp2" required>
+                </div>
+            <input type="submit" value="Login" class=" btn btn-primary w-100 mt-3">
+         </form>
+      </div>
+    </div>
+</div>

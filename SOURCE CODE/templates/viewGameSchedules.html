@@ -1,0 +1,65 @@
+{% include 'shead.html'%}
+<br><br>
+<div class="text-center h3 mt-4">View Game Schedules</div>
+<div class="row">
+    {% for game_schedule in game_schedules%}
+    {% set times_slot = get_time_slots(game_schedule['time_slot_id'])%}
+    {% set stadium = get_stadium_by_timeSlots(times_slot['stadium_id'])%}
+    <div class="col-md-2"></div>
+    <div class="col-md-8 mt-4">
+        <div class="card p-3 mt-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-secondary" style="font-size:13px">Stadium Name</div>
+                    <div class="h6" style="font-size:13px">{{stadium['stadium_name']}}</div>
+                </div>
+                 <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">Stadium Type</div>
+                    <div class="h6" style="font-size:13px">{{stadium['stadium_type']}}</div>
+                 </div>
+                 <div class="col-md-4">
+                     <div class="text-secondary" style="font-size:13px">Stadium Location</div>
+                    <div class="h6" style="font-size:13px">{{stadium['location']}} , {{stadium['address']}}</div>
+                 </div>
+                <hr>
+                 <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">Game Title</div>
+                    <div class="h6" style="font-size:13px">{{game_schedule['game_title']}}</div>
+                 </div>
+                 <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">Scheduled Date</div>
+                    <div class="h6" style="font-size:13px">{{times_slot['date']}}</div>
+                 </div>
+                 <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">Number Of Teams</div>
+                    <div class="h6" style="font-size:13px">{{game_schedule['no_of_teams']}}</div>
+                 </div>
+                 <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">Start Time</div>
+                    <div class="h6" style="font-size:13px">{{times_slot['start_time']}}</div>
+                 </div>
+                 <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">End Time</div>
+                    <div class="h6" style="font-size:13px">{{times_slot['end_time']}}</div>
+                 </div>
+                <hr>
+                <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">Number Of Players</div>
+                    <div class="h6" style="font-size:13px">{{game_schedule['no_of_players_in_team']}}</div>
+                 </div>
+                 <div class="col-md-4">
+                      <div class="text-secondary" style="font-size:13px">Duration</div>
+                    <div class="h6" style="font-size:13px">{{game_schedule['duration']}}</div>
+                 </div>
+                 <div class="col-md-2">
+                     <a href="addTickets?schedule_id={{game_schedule['_id']}}" class="btn btn-primary">Add Tickets</a>
+                 </div>
+                 <div class="col-md-2">
+                     <a href="viewTickets?schedule_id={{game_schedule['_id']}}" class="btn btn-primary">View Tickets</a>
+                 </div>
+            </div>
+         </div>
+         </div>
+    <div class="col-md-2"></div>
+    {% endfor%}
+</div>

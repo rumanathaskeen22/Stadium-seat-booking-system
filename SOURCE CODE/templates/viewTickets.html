@@ -1,0 +1,43 @@
+{% include 'shead.html'%}
+<br><br>
+<div class="container mt-3">
+<h3 class="text-center">View Tickets</h3>
+<table style="width:100%" class="table table-bordered">
+  <tr>
+        <th style="font-size:12px">Number Of Seats</th>
+        <th style="font-size:12px">Price Per Seat</th>
+        <th style="font-size:12px">IS CoupleSeat</th>
+        <th style="font-size:12px">Complimentary Food</th>
+         {% if session['role'] =='audian'%}
+      <th style="font-size:12px">View Seats</th>
+      {% endif%}
+          {% if session['role'] =='gameOrganiser'%}
+      <th style="font-size:12px">View Bookings</th>
+      {% endif%}
+
+  </tr>
+     {% for ticket in tickets%}
+      <tr>
+        <td>{{ticket['no_of_seats']}}</td>
+        <td>$ {{ticket['price_per_seat']}}</td>
+        <td>{{ticket['is_coupleSeat']}}</td>
+         <td>{{ticket['complimentary_food']}}</td>
+          {% if session['role'] =='audian'%}
+          <td>
+              <form action="bookTickets" method="post">
+                  <input type="hidden" name="schedule_id" value="{{ticket['schedule_id']}}">
+                    <input type="hidden" name="ticket_id" value="{{ticket['_id']}}">
+                   <input type="submit" value="Book Tickets" class="btn btn-primary">
+              </form>
+          </td>
+          {% endif%}
+          {% if session['role'] =='gameOrganiser'%}
+          <td>
+              <a href="ViewBookings?ticket_id={{ticket['_id']}}" class="btn btn-primary">View Bookings</a>
+          </td>
+          {% endif%}
+      </tr>
+    {% endfor%}
+
+</table>
+</div>

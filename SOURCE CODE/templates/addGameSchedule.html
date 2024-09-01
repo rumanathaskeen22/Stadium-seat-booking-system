@@ -1,0 +1,71 @@
+{% include 'shead.html'%}
+<br><br>
+
+<script>
+ function validate(){
+        let game_title = document.getElementById("game_title").value
+        if(game_title==""){
+            alert("Enter Game Name")
+            return false;
+        }
+        let no_of_teams = document.getElementById("no_of_teams").value
+        if(no_of_teams==""){
+            alert("Enter Number Of Teams")
+            return false;
+        }
+         let no_of_players_in_team = document.getElementById("no_of_players_in_team").value
+        if(no_of_players_in_team==""){
+            alert("Enter Number Of Player in a team ")
+            return false;
+        }
+        let duration = document.getElementById("duration").value
+        if(duration==""){
+            alert("Enter Duration")
+            return false;
+        }
+        let game_type = document.getElementById("game_type").value
+        if(game_type==='outdoor' && (game_title!='soccer' && game_title!='Soccer') && (game_title!='football' && game_title!='Football')){
+            alert("Outdoor Game Must be Soccer or Football")
+            return false;
+        }
+        if(game_type==='indoor' && (game_title!='volleyball' && game_title!='Volleyball ' && game_title!='basketball' && game_title!='Basketball')){
+            alert("Indoor Game Must be Volleyball or basketball")
+            return false;
+        }
+        return true
+    }
+</script>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 mt-5">
+        <form action="addGameSchedule1" method="post" onsubmit="return validate()">
+            <input type="hidden" name="time_slot_id" value="{{time_slot_id}}">
+            <div class="text-center h3">Add Game Schedule</div>
+            <div class="form-group">
+                <label for="game_title">Game Title</label>
+                <input type="text" name="game_title" id="game_title" placeholder="Game Name"  class="form-control mt-1">
+            </div>
+            <div class="form-group mt-1">
+                <label for="game_type">Game Type</label>
+                <select name="game_type" id="game_type" class="form-control mt-1">
+                    <option value="indoor">indoor</option>
+                      <option value="outdoor">outdoor</option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label for="no_of_teams">Number Of Teams</label>
+                <input type="text" name="no_of_teams" id="no_of_teams" placeholder="Number Of Teams"  class="form-control mt-1" >
+            </div>
+             <div class="form-group mt-2">
+                <label for="no_of_players_in_team" >Players in Team</label>
+                <input type="text" name="no_of_players_in_team" id="no_of_players_in_team" placeholder="Number Players in Team" class="form-control mt-1" >
+            </div>
+           <div class="form-group mt-2">
+                <label for="duration">Duration</label>
+                <input type="text" name="duration" id="duration" placeholder="Duration" class="form-control mt-1" >
+            </div>
+            <input type="submit" value="Add Schedule" class="btn btn-primary w-100 mt-3">
+        </form>
+    </div>
+</div>
+

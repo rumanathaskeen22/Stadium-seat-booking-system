@@ -1,0 +1,64 @@
+{% include 'shead.html'%}
+<br><br>
+<style>
+body {
+  background-image: url("https://i.pinimg.com/originals/c0/61/2c/c0612c159d6a7fde923e782df89dc931.jpg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+
+}
+</style>
+<script>
+ function validate(){
+        let stadium_name = document.getElementById("stadium_name").value
+        if(stadium_name==""){
+            alert("Enter Stadium Name")
+            return false;
+        }
+        let stadium_type = document.getElementById("stadium_type").value
+        if(stadium_type==""){
+            alert("Enter Stadium Type")
+            return false;
+        }
+         let location = document.getElementById("location").value
+        if(location==""){
+            alert("Enter Location")
+            return false;
+        }
+        let address = document.getElementById("address").value
+        if(address==""){
+            alert("Enter Address")
+            return false;
+        }
+        return true
+    }
+</script>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 mt-5">
+        <form action="addStadium1" method="post" onsubmit="return validate()">
+            <div class="text-center  h3">Add Stadium</div>
+            <div class="form-group">
+                <label for="stadium_name" class="text-white">Stadium Name</label>
+                <input type="text" name="stadium_name" id="stadium_name" placeholder="Stadium Name"  class="form-control mt-1">
+            </div>
+<!--            <div class="form-group mt-2">-->
+<!--                <label for="stadium_type" class="text-white">Stadium Type</label>-->
+<!--                <select id="stadium_type" name="stadium_type" class="form-control">-->
+<!--                    <option value="indoor">indoor</option>-->
+<!--                     <option value="outdoor">outdoor</option>-->
+<!--                </select>-->
+<!--            </div>-->
+             <div class="form-group mt-2">
+                <label for="location" class="text-white">Location</label>
+                <input type="text" name="location" id="location" placeholder="Location" class="form-control mt-1" >
+            </div>
+             <div class="form-group mt-2">
+                    <label for="address" class="text-white">Address</label>
+                    <textarea name="address" id="address" placeholder="Address"  class="form-control mt-1"></textarea>
+                </div>
+            <input type="submit" value="Add Stadium" class="btn btn-primary w-100 mt-3">
+        </form>
+    </div>
+</div>
+

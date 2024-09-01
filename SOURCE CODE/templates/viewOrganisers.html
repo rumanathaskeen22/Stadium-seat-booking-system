@@ -1,0 +1,33 @@
+{% include 'shead.html'%}
+<br><br>
+<div class="container mt-3">
+<h3 class="text-center">Game Organisers</h3>
+<table style="width:100%" class="table table-bordered">
+  <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Status</th>
+       <th>Action</th>
+
+  </tr>
+      {% for game_organiser in game_organisers%}
+      <tr>
+        <td>{{game_organiser['name']}}</td>
+        <td>{{game_organiser['email']}}</td>
+        <td>{{game_organiser['phone']}}</td>
+         <td>{{game_organiser['address']}}</td>
+          <td>{{game_organiser['account_status']}}</td>
+          <td>
+              {% if game_organiser['account_status']=='Not Activated' %}
+              <a href="authorize_organiser?gameOrganiser_id={{game_organiser['_id']}}" class="btn btn-success">Activate</a>
+              {% else%}
+              <a href="authorize_organiser?gameOrganiser_id={{game_organiser['_id']}}" class="btn btn-danger">Deactivate</a>
+              {% endif%}
+          </td>
+      </tr>
+  {% endfor%}
+
+</table>
+</div>
